@@ -27,6 +27,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AF77DA21241F3E3600CC28C6 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		AF77DA22242198A800CC28C6 /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = container.jpg; sourceTree = "<group>"; };
+		AF77DA232421E52600CC28C6 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 		AFEB3AB323EC8C2200BAB87B /* OpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFEB3AB623EC8C2200BAB87B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AFEB3ABE23EC8C8C00BAB87B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -72,11 +75,14 @@
 		AFEB3AB523EC8C2200BAB87B /* OpenGL */ = {
 			isa = PBXGroup;
 			children = (
+				AF77DA232421E52600CC28C6 /* awesomeface.png */,
 				AFEB3AB623EC8C2200BAB87B /* main.cpp */,
-				AFF0E09A240736F50035E098 /* Shader.cpp */,
-				AFF0E09B240736F50035E098 /* Shader.hpp */,
 				AFF0E09E2407A18C0035E098 /* vertexShader.txt */,
 				AFF0E09F2407A19F0035E098 /* fragmentShader.txt */,
+				AFF0E09B240736F50035E098 /* Shader.hpp */,
+				AFF0E09A240736F50035E098 /* Shader.cpp */,
+				AF77DA21241F3E3600CC28C6 /* stb_image.h */,
+				AF77DA22242198A800CC28C6 /* container.jpg */,
 			);
 			path = OpenGL;
 			sourceTree = "<group>";
