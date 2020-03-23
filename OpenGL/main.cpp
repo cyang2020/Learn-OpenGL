@@ -4,7 +4,7 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-
+#include "Camera.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -18,7 +18,7 @@
 //VAO: Vertex Array Object(Header or description of data)
 //VBO: Vertex Buffer Object(data)
 GLuint VBO, VAO, EBO;
-
+Camera camera(glm::vec3(0, 0, 3.0), glm::vec3(0, 0, 0), glm::vec3(0, 1.0f, 0));
 //Window dementions
 const GLint WIDTH = 800, HEIGHT = 600;
 float triOffset = 0.0f;
@@ -204,10 +204,9 @@ int main() {
                     modelMat = glm::translate(modelMat, cubePositions[i]);
                     modelMat = glm::rotate(modelMat, (float)glfwGetTime() * glm::radians(20.f * (i + 1)), glm::vec3(0.5f, 1.0f, 0.0f));
                     glm::mat4 viewMat(1.0f);
-                    viewMat = glm::translate(viewMat, glm::vec3(0.0f, 0.0f, -3.0f));
+                    viewMat = camera.getViewMatrix();
                     glm::mat4 projectionMat(1.0f);
                     projectionMat = glm::perspective(glm::radians(45.0f), (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
-                       
             //      glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "transform"), 1, GL_FALSE, glm::value_ptr(trans));
                     glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMat));
                     glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMat));
