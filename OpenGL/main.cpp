@@ -132,29 +132,21 @@ void mouse_callback(GLFWwindow* window, double xPos, double yPos) {
     camera.processMouseMovement(deltaX, deltaY);
 }
 
-void processTexture(unsigned int* textureBuffer, int num, bool RGB, char* filePath, bool flip) {
-    glGenTextures(num, &(*textureBuffer));
-    glBindTexture(GL_TEXTURE_2D, *textureBuffer);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    if (flip){
-        stbi_set_flip_vertically_on_load(true);
-    }
+unsigned int processTexture(const char* filePath, int num, GLint internalFormat, GLenum format, int textureSlot) {
+    unsigned int textureBuffer;
+    glGenTextures(num, &textureBuffer);
+    glActiveTexture(GL_TEXTURE0 + textureSlot);
+    glBindTexture(GL_TEXTURE_2D, textureBuffer);
     int textureWidth, textureHeight, nrChannel;
     unsigned char *data = stbi_load(filePath, &textureWidth, &textureHeight, &nrChannel, 0);
     if (data) {
-        if (RGB) {
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-        } else {
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-        }
+        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, textureWidth, textureHeight, 0, format, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
     } else {
         printf("Texture load failed");
     }
     stbi_image_free(data);
+    return textureBuffer;
 }
 
 int main() {
@@ -204,18 +196,9 @@ int main() {
 
     Shader* ourShader = new Shader("vertexShader.vert", "fragmentShader.frag");
     createTriangle();
-    
     //Attach Texture:
-    unsigned int textureBufferA;
-    unsigned int* texturePtr = &textureBufferA;
-    char filePathA[] = "container.jpg";
-    processTexture(texturePtr, 1, true, filePathA, false);
-
-    unsigned int textureBufferB;
-    texturePtr = &textureBufferB;
-    char filePathB[] = "awesomeface.png";
-    processTexture(texturePtr, 1, false, filePathB, true);
-
+    unsigned int textureBufferA = processTexture("container.jpg", 1, GL_RGB, GL_RGB, 0);
+    unsigned int textureBufferB = processTexture("awesomeface.png", 1, GL_RGBA, GL_RGBA, 1);
     ourShader -> use();
     ourShader -> setIntUni("ourTex", 0);
     ourShader -> setIntUni("ourFaceTex", 1);
@@ -232,25 +215,27 @@ int main() {
         ourShader->use();
         glBindVertexArray(VAO);
             glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-        glm::mat4 viewMat(1.0f);
-        viewMat = camera.getViewMatrix();
                 for (int i = 0; i < 10; i ++) {
+                    //Set MVP Matrices
                     glm::mat4 modelMat(1.0f);
                     modelMat = glm::translate(modelMat, cubePositions[i]);
                     modelMat = glm::rotate(modelMat, (float)glfwGetTime() * glm::radians(20.f * (i + 1)), glm::vec3(0.5f, 1.0f, 0.0f));
-
                     glm::mat4 projectionMat(1.0f);
                     projectionMat = glm::perspective(glm::radians(45.0f), (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
-            //      glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "transform"), 1, GL_FALSE, glm::value_ptr(trans));
+                    glm::mat4 viewMat(1.0f);
+                    viewMat = camera.getViewMatrix();
+                    //glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "transform"), 1, GL_FALSE, glm::value_ptr(trans));
                     glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMat));
                     glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMat));
                     glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "projectionMat"), 1, GL_FALSE, glm::value_ptr(projectionMat));
-
+                    
+                    //Set Textures
                     glActiveTexture(GL_TEXTURE0);
                     glBindTexture(GL_TEXTURE_2D, textureBufferA);
                     glActiveTexture(GL_TEXTURE1);
                     glBindTexture(GL_TEXTURE_2D, textureBufferB);
                     glDrawArrays(GL_TRIANGLES, 0, 36);
+                    
                     //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     //                trans = glm::mat4(1.0f);
     //                //Translate > Rotate > scale
@@ -262,6 +247,7 @@ int main() {
     //                glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     
                 }
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
         glUseProgram(0);
         glfwPollEvents();
