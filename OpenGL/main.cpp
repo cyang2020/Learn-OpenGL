@@ -18,16 +18,16 @@
 //VAO: Vertex Array Object(Header or description of data)
 //VBO: Vertex Buffer Object(data)
 GLuint VBO, VAO, EBO;
-Camera camera(glm::vec3(0, 0, 3.0), glm::vec3(0, 0, 0), glm::vec3(0, 1.0f, 0));
+Camera camera(glm::vec3(0, 0, 3.0), 0.0f, -90.0f, glm::vec3(0, 1.0f, 0));
 //Window dementions
 const GLint WIDTH = 800, HEIGHT = 600;
-float triOffset = 0.0f;
-float triMaxMove = 0.7f;
-float triMove = 0.005f;
-
+float lastX = 400.0f;
+float lastY = 300.0f;
+bool firstTime = true;
 //When creating some mesh or object:
 //GenVAO, BindVAO, GenVBO, BindVBO, BUfferData(put data into VBO), AttrPtr(format the VAO), EnableIndex
-void createTriangle(){
+
+void createTriangle() {
     GLfloat vertices[] = {
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
          0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
@@ -75,7 +75,6 @@ void createTriangle(){
         0, 1, 2, //EBO 2 triangles make up one Rectangle
         2, 3, 0
     };
-
     glGenVertexArrays(1, &VAO); //generating 1 array stored in VAO
     glBindVertexArray(VAO); //binding the cur array with VAO
         glGenBuffers(1, &VBO);
@@ -84,7 +83,6 @@ void createTriangle(){
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
             glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
             glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-    
             glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GL_FLOAT), (void*)0);
             glEnableVertexAttribArray(0); //enable index 0 = loc
 //            glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GL_FLOAT), (void*)(3 * sizeof(GL_FLOAT)));
@@ -94,9 +92,44 @@ void createTriangle(){
 }
 
 void processInput(GLFWwindow* window) {
+    float cameraSpeed = 0.05f;
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
         glfwSetWindowShouldClose(window, true);
     }
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+        camera.Position += cameraSpeed * camera.Direction;
+    }
+    else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+        camera.Position -= cameraSpeed * camera.Direction;
+    }
+    else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+        camera.Position -= glm::normalize(glm::cross(camera.Direction, camera.WorldUp)) * cameraSpeed;
+    }
+    else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+        camera.Position += glm::normalize(glm::cross(camera.Direction, camera.WorldUp)) * cameraSpeed;
+    }
+}
+
+void mouse_callback(GLFWwindow* window, double xPos, double yPos) {
+    if (firstTime) {
+        lastX = xPos;
+        lastY = yPos;
+        firstTime = false;
+    }
+    float deltaX = xPos - lastX; 
+    float deltaY = lastY - yPos;
+    lastX = xPos;
+    lastY = yPos;
+    if (camera.Pitch > 89.0f) {
+        camera.Pitch = 89.0f;
+    }
+    if (camera.Pitch < -89.0f) {
+        camera.Pitch = -89.0f;
+    }
+    float sensitivity = 0.08f;
+    deltaX *= sensitivity;
+    deltaY *= sensitivity;
+    camera.processMouseMovement(deltaX, deltaY);
 }
 
 void processTexture(unsigned int* textureBuffer, int num, bool RGB, char* filePath, bool flip) {
@@ -147,7 +180,6 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    
     //Create a window
     GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "OPENGL", NULL, NULL);
     if (!window) {
@@ -158,6 +190,8 @@ int main() {
     int screenWidth, screenHeight;
     glfwGetFramebufferSize(window, &screenWidth, &screenHeight);
     glfwMakeContextCurrent(window);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetCursorPosCallback(window, mouse_callback);
     glewExperimental = GL_TRUE;
     if (glewInit() != GLEW_OK) {
         printf("initialisation failed");
@@ -165,11 +199,10 @@ int main() {
         glfwTerminate();
         return 1;
     }
-    
     glViewport(0, 0, screenWidth, screenHeight);
     glEnable(GL_DEPTH_TEST);
 
-    Shader* ourShader = new Shader("vertexShader.txt", "fragmentShader.txt");
+    Shader* ourShader = new Shader("vertexShader.vert", "fragmentShader.frag");
     createTriangle();
     
     //Attach Texture:
@@ -199,12 +232,13 @@ int main() {
         ourShader->use();
         glBindVertexArray(VAO);
             glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+        glm::mat4 viewMat(1.0f);
+        viewMat = camera.getViewMatrix();
                 for (int i = 0; i < 10; i ++) {
                     glm::mat4 modelMat(1.0f);
                     modelMat = glm::translate(modelMat, cubePositions[i]);
                     modelMat = glm::rotate(modelMat, (float)glfwGetTime() * glm::radians(20.f * (i + 1)), glm::vec3(0.5f, 1.0f, 0.0f));
-                    glm::mat4 viewMat(1.0f);
-                    viewMat = camera.getViewMatrix();
+
                     glm::mat4 projectionMat(1.0f);
                     projectionMat = glm::perspective(glm::radians(45.0f), (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
             //      glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "transform"), 1, GL_FALSE, glm::value_ptr(trans));

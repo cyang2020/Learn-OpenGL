@@ -33,6 +33,8 @@
 		AF77DA232421E52600CC28C6 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 		AF77DA24242541A200CC28C6 /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		AF77DA25242541A200CC28C6 /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
+		AF77DA272429877800CC28C6 /* fragmentShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = fragmentShader.frag; sourceTree = "<group>"; };
+		AF77DA282429877800CC28C6 /* vertexShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = vertexShader.vert; sourceTree = "<group>"; };
 		AFEB3AB323EC8C2200BAB87B /* OpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFEB3AB623EC8C2200BAB87B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AFEB3ABE23EC8C8C00BAB87B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -40,8 +42,6 @@
 		AFEB3AC223EC8EB300BAB87B /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.2/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		AFF0E09A240736F50035E098 /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		AFF0E09B240736F50035E098 /* Shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
-		AFF0E09E2407A18C0035E098 /* vertexShader.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertexShader.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.c; };
-		AFF0E09F2407A19F0035E098 /* fragmentShader.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragmentShader.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.c; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,11 +79,11 @@
 			isa = PBXGroup;
 			children = (
 				AF77DA232421E52600CC28C6 /* awesomeface.png */,
+				AF77DA272429877800CC28C6 /* fragmentShader.frag */,
+				AF77DA282429877800CC28C6 /* vertexShader.vert */,
 				AFEB3AB623EC8C2200BAB87B /* main.cpp */,
 				AF77DA24242541A200CC28C6 /* Camera.cpp */,
 				AF77DA25242541A200CC28C6 /* Camera.hpp */,
-				AFF0E09E2407A18C0035E098 /* vertexShader.txt */,
-				AFF0E09F2407A19F0035E098 /* fragmentShader.txt */,
 				AFF0E09B240736F50035E098 /* Shader.hpp */,
 				AFF0E09A240736F50035E098 /* Shader.cpp */,
 				AF77DA21241F3E3600CC28C6 /* stb_image.h */,
