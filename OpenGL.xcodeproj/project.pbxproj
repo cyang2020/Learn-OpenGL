@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF452B2B242D664900A92256 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF452B29242D664900A92256 /* Material.cpp */; };
+		AF452B2E242D6F3A00A92256 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF452B2C242D6F3A00A92256 /* Light.cpp */; };
 		AF77DA26242541A200CC28C6 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF77DA24242541A200CC28C6 /* Camera.cpp */; };
 		AFEB3AB723EC8C2200BAB87B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFEB3AB623EC8C2200BAB87B /* main.cpp */; };
 		AFEB3ABF23EC8C8C00BAB87B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEB3ABE23EC8C8C00BAB87B /* OpenGL.framework */; };
@@ -28,6 +30,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AF452B29242D664900A92256 /* Material.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
+		AF452B2A242D664900A92256 /* Material.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Material.hpp; sourceTree = "<group>"; };
+		AF452B2C242D6F3A00A92256 /* Light.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
+		AF452B2D242D6F3A00A92256 /* Light.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Light.hpp; sourceTree = "<group>"; };
 		AF77DA21241F3E3600CC28C6 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		AF77DA22242198A800CC28C6 /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = container.jpg; sourceTree = "<group>"; };
 		AF77DA232421E52600CC28C6 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
@@ -78,16 +84,20 @@
 		AFEB3AB523EC8C2200BAB87B /* OpenGL */ = {
 			isa = PBXGroup;
 			children = (
-				AF77DA232421E52600CC28C6 /* awesomeface.png */,
-				AF77DA272429877800CC28C6 /* fragmentShader.frag */,
 				AF77DA282429877800CC28C6 /* vertexShader.vert */,
+				AF77DA272429877800CC28C6 /* fragmentShader.frag */,
 				AFEB3AB623EC8C2200BAB87B /* main.cpp */,
-				AF77DA24242541A200CC28C6 /* Camera.cpp */,
+				AF452B2D242D6F3A00A92256 /* Light.hpp */,
+				AF452B2C242D6F3A00A92256 /* Light.cpp */,
+				AF452B2A242D664900A92256 /* Material.hpp */,
+				AF452B29242D664900A92256 /* Material.cpp */,
 				AF77DA25242541A200CC28C6 /* Camera.hpp */,
+				AF77DA24242541A200CC28C6 /* Camera.cpp */,
 				AFF0E09B240736F50035E098 /* Shader.hpp */,
 				AFF0E09A240736F50035E098 /* Shader.cpp */,
 				AF77DA21241F3E3600CC28C6 /* stb_image.h */,
 				AF77DA22242198A800CC28C6 /* container.jpg */,
+				AF77DA232421E52600CC28C6 /* awesomeface.png */,
 			);
 			path = OpenGL;
 			sourceTree = "<group>";
@@ -159,6 +169,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF452B2E242D6F3A00A92256 /* Light.cpp in Sources */,
+				AF452B2B242D664900A92256 /* Material.cpp in Sources */,
 				AFF0E09C240736F50035E098 /* Shader.cpp in Sources */,
 				AF77DA26242541A200CC28C6 /* Camera.cpp in Sources */,
 				AFEB3AB723EC8C2200BAB87B /* main.cpp in Sources */,

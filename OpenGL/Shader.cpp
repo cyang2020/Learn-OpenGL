@@ -1,10 +1,4 @@
-//
-//  Shader.cpp
-//  OpenGL
-//
-//  Created by Casper Yang on 2/26/20.
-//  Copyright © 2020 Casper Yang. All rights reserved.
-//
+
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -90,5 +84,11 @@ void Shader::setIntUni(const std::string &name, int value){
     glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
 }
 void Shader::setFloatUni(const std::string &name, float value){
-    glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
+    glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
+}
+void Shader::setVec3Uni(const std::string &name, float x, float y, float z) {
+    glUniform3f(glGetUniformLocation(ID, name.c_str()), x, y, z);
+}
+void Shader::setVec3Uni(const std::string &name, glm::vec3 param) {
+    glUniform3f(glGetUniformLocation(ID, name.c_str()), param.x, param.y, param.z);
 }
