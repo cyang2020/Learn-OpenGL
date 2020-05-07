@@ -11,11 +11,10 @@
 class Material {
 public:
     Shader *shader;
-    glm::vec3 ambient;
-    glm::vec3 diffuse;
-    glm::vec3 specular;
+    unsigned int diffuseMap;
+    unsigned int specularMap;
     float shininess;
-    Material(Shader* _shader, glm::vec3 _ambient, glm::vec3 _diffuse, glm::vec3 _specular, float _shininess);
+    Material(Shader* _shader, unsigned int _diffuseMap, unsigned int _specularMap, float _shininess);
     void setUniforms();
 };
 #endif /* Material_hpp */

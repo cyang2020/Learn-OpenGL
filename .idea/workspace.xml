@@ -9,7 +9,35 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3792101-55a1-416e-bc5a-16e64ebd26e2" name="Default Changelist" comment="" />
+    <list default="true" id="a3792101-55a1-416e-bc5a-16e64ebd26e2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/OpenGL/PointLight.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/PointLight.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imconfig.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imgui.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imgui.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imgui_demo.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imgui_draw.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imgui_impl_glfw.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imgui_impl_glfw.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imgui_impl_opengl3.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imgui_impl_opengl3.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imgui_internal.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imgui_widgets.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imstb_rectpack.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imstb_textedit.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGL/imstb_truetype.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenGL.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/OpenGL.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenGL.xcodeproj/project.xcworkspace/xcuserdata/Casper.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/OpenGL.xcodeproj/project.xcworkspace/xcuserdata/Casper.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenGL.xcodeproj/project.xcworkspace/xcuserdata/Casper.xcuserdatad/WorkspaceSettings.xcsettings" beforeDir="false" afterPath="$PROJECT_DIR$/OpenGL.xcodeproj/project.xcworkspace/xcuserdata/Casper.xcuserdatad/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenGL/Light.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/OpenGL/Light.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenGL/Light.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/OpenGL/Light.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenGL/Material.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/OpenGL/Material.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenGL/Material.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/OpenGL/Material.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenGL/fragmentShader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/OpenGL/fragmentShader.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenGL/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/OpenGL/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenGL/vertexShader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/OpenGL/vertexShader.vert" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,18 +53,42 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpenGL/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="136" column="16" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="16" />
+            <state relative-caret-position="1245">
+              <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/OpenGL/fragmentShader.frag">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenGL/awesomeface.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/OpenGL/fragmentShader.frag" />
+      </list>
+    </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
@@ -78,10 +130,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js.buildTools.grunt.grunt-cli.package" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
@@ -97,17 +152,16 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="CMakeRunConfiguration" factoryName="Application" nameIsGenerated="true" PASS_PARENT_ENVS_2="true" EXPLICIT_BUILD_TARGET_NAME="all">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-        <option name="RunConfigurationTask" enabled="true" run_configuration_name="Unnamed" run_configuration_type="CMakeRunConfiguration" />
-      </method>
-    </configuration>
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="RunConfigurationTask" enabled="true" run_configuration_name="Unnamed" run_configuration_type="CMakeRunConfiguration" />
       </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.grunt">
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
     </configuration>
   </component>
   <component name="SvnConfiguration">
@@ -124,16 +178,20 @@
       <workItem from="1582748707630" duration="28000" />
       <workItem from="1582748758826" duration="62000" />
       <workItem from="1582760255484" duration="78000" />
+      <workItem from="1588611296468" duration="93000" />
+      <workItem from="1588611530686" duration="36000" />
+      <workItem from="1588802232231" duration="20000" />
+      <workItem from="1588802264264" duration="199000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="360000" />
+    <option name="totallyTimeSpent" value="708000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="808" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26037195" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2746781" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -147,7 +205,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="CMake" order="11" visible="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="CMake" order="11" visible="true" weight="0.32960895" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -160,13 +218,23 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/OpenGL/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="136" column="16" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="16" />
+        <state relative-caret-position="1245">
+          <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenGL/awesomeface.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenGL/fragmentShader.frag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

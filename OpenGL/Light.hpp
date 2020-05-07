@@ -9,12 +9,12 @@
 
 class Light {
 public:
-    Shader *shader;
-    glm::vec3 position;
+    Shader* shader;
+    glm::vec3 direction;
     glm::vec3 ambient;
     glm::vec3 diffuse;
     glm::vec3 specular;
-    Light(Shader* _shader, glm::vec3 _position, glm::vec3 _ambient, glm::vec3 _diffuse, glm::vec3 _specular);
+    Light(Shader* _shader, glm::vec3 _direction, glm::vec3 _ambient, glm::vec3 _diffuse, glm::vec3 _specular);
     void setUniforms();
 };
 #endif /* Light_hpp */
