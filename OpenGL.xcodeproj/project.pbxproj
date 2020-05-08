@@ -17,6 +17,7 @@
 		AFC1C8EF2460A502006DE0B7 /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC1C8E42460A3F0006DE0B7 /* imgui_widgets.cpp */; };
 		AFC1C8F02460A502006DE0B7 /* imgui_impl_glfw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC1C8DF2460A3EF006DE0B7 /* imgui_impl_glfw.cpp */; };
 		AFC1C8F32463528E006DE0B7 /* PointLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC1C8F12463528E006DE0B7 /* PointLight.cpp */; };
+		AFC1C8F62464DA03006DE0B7 /* SpotLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC1C8F42464DA03006DE0B7 /* SpotLight.cpp */; };
 		AFEB3AB723EC8C2200BAB87B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFEB3AB623EC8C2200BAB87B /* main.cpp */; };
 		AFEB3ABF23EC8C8C00BAB87B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEB3ABE23EC8C8C00BAB87B /* OpenGL.framework */; };
 		AFEB3AC323EC8EB300BAB87B /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEB3AC223EC8EB300BAB87B /* libglfw.3.3.dylib */; };
@@ -66,6 +67,8 @@
 		AFC1C8EA2460A3F0006DE0B7 /* imgui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imgui.h; sourceTree = "<group>"; };
 		AFC1C8F12463528E006DE0B7 /* PointLight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PointLight.cpp; sourceTree = "<group>"; };
 		AFC1C8F22463528E006DE0B7 /* PointLight.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PointLight.hpp; sourceTree = "<group>"; };
+		AFC1C8F42464DA03006DE0B7 /* SpotLight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpotLight.cpp; sourceTree = "<group>"; };
+		AFC1C8F52464DA03006DE0B7 /* SpotLight.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpotLight.hpp; sourceTree = "<group>"; };
 		AFEB3AB323EC8C2200BAB87B /* OpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFEB3AB623EC8C2200BAB87B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AFEB3ABE23EC8C8C00BAB87B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -116,6 +119,8 @@
 				AF452B2C242D6F3A00A92256 /* Light.cpp */,
 				AFC1C8F12463528E006DE0B7 /* PointLight.cpp */,
 				AFC1C8F22463528E006DE0B7 /* PointLight.hpp */,
+				AFC1C8F42464DA03006DE0B7 /* SpotLight.cpp */,
+				AFC1C8F52464DA03006DE0B7 /* SpotLight.hpp */,
 				AF452B2A242D664900A92256 /* Material.hpp */,
 				AF452B29242D664900A92256 /* Material.cpp */,
 				AF77DA25242541A200CC28C6 /* Camera.hpp */,
@@ -215,6 +220,7 @@
 				AF452B2E242D6F3A00A92256 /* Light.cpp in Sources */,
 				AF452B2B242D664900A92256 /* Material.cpp in Sources */,
 				AFF0E09C240736F50035E098 /* Shader.cpp in Sources */,
+				AFC1C8F62464DA03006DE0B7 /* SpotLight.cpp in Sources */,
 				AFC1C8EF2460A502006DE0B7 /* imgui_widgets.cpp in Sources */,
 				AFC1C8EC2460A502006DE0B7 /* imgui_impl_opengl3.cpp in Sources */,
 				AFC1C8EB2460A502006DE0B7 /* imgui_draw.cpp in Sources */,

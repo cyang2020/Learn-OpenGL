@@ -9,6 +9,7 @@
 #include "Light.hpp"
 #include "Shader.hpp"
 #include "PointLight.hpp"
+#include "SpotLight.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -219,8 +220,9 @@ int main() {
     ImGui::StyleColorsDark();
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 330 core");
-    bool change_dir_light = true;
-    
+    bool changeDirLight = true;
+    bool changePointLight = true;
+    bool changeSpotLight = true;
     Shader* ourShader = new Shader("vertexShader.vert", "fragmentShader.frag");
     createTriangle();
     
@@ -229,7 +231,7 @@ int main() {
     Light* ourLight = new Light(ourShader, glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f));
     
     PointLight* ourPointLight = new PointLight(ourShader, glm::vec3(1.2f, 1.0f, 2.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f), 1.0f, 0.09f, 0.032f);
-    
+    SpotLight* ourSpotLight = new SpotLight(ourShader, glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f), camera.Position, camera.Direction, glm::cos(glm::radians(12.5f)), glm::cos(glm::radians(17.5f)));
     
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
@@ -238,17 +240,28 @@ int main() {
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
-        
         {
-            ImGui::Begin("Change Dir Light");
-            ImGui::Checkbox("Directional Light", &change_dir_light);
+            ImGui::Begin("Change Light");
+            ImGui::Checkbox("Directional Light", &changeDirLight);
+            ImGui::Checkbox("Point Light", &changePointLight);
+            ImGui::Checkbox("Spot Light", &changeSpotLight);
             ImGui::End();
         }
         ImGui::Render();
-        if (change_dir_light) {
+        if (changeDirLight) {
             ourLight = new Light(ourShader, glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f));
         } else {
             ourLight = new Light(ourShader, glm::vec3(-0.2f, 0.0f, -0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+        }
+        if (changePointLight) {
+            ourPointLight = new PointLight(ourShader, glm::vec3(1.2f, 1.0f, 2.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f), 1.0f, 0.09f, 0.032f);
+        } else {
+            ourPointLight = new PointLight(ourShader, glm::vec3(1.2f, 1.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), 1.0f, 0.09f, 0.032f);
+        }
+        if (changeSpotLight) {
+            ourSpotLight = new SpotLight(ourShader, glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f), camera.Position, camera.Direction, glm::cos(glm::radians(12.5f)), glm::cos(glm::radians(17.5f)));
+        } else {
+            ourSpotLight = new SpotLight(ourShader, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), camera.Position, camera.Direction, glm::cos(glm::radians(12.5f)), glm::cos(glm::radians(17.5f)));
         }
         //IMGUI Windows
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -275,8 +288,8 @@ int main() {
                     ourShader->setVec3Uni("viewPos", camera.Position);
                     ourLight->setUniforms();
                     ourPointLight->setUniforms();
+                    ourSpotLight->setUniforms();
                     ourMaterial->setUniforms();
-                    
                     glDrawArrays(GL_TRIANGLES, 0, 36);
                 }
             glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
