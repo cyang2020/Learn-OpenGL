@@ -18,6 +18,11 @@
 		AFC1C8F02460A502006DE0B7 /* imgui_impl_glfw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC1C8DF2460A3EF006DE0B7 /* imgui_impl_glfw.cpp */; };
 		AFC1C8F32463528E006DE0B7 /* PointLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC1C8F12463528E006DE0B7 /* PointLight.cpp */; };
 		AFC1C8F62464DA03006DE0B7 /* SpotLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC1C8F42464DA03006DE0B7 /* SpotLight.cpp */; };
+		AFC1C8F92464FEB7006DE0B7 /* libassimp.5.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC1C8F72464FEB7006DE0B7 /* libassimp.5.0.0.dylib */; };
+		AFC1C8FA2464FEB7006DE0B7 /* libassimp.5.0.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = AFC1C8F72464FEB7006DE0B7 /* libassimp.5.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		AFC1C8FB2464FEB7006DE0B7 /* libIrrXML.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC1C8F82464FEB7006DE0B7 /* libIrrXML.dylib */; };
+		AFC1C8FC2464FEB7006DE0B7 /* libIrrXML.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = AFC1C8F82464FEB7006DE0B7 /* libIrrXML.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		AFC1C900246624D5006DE0B7 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC1C8FE246624D5006DE0B7 /* Mesh.cpp */; };
 		AFEB3AB723EC8C2200BAB87B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFEB3AB623EC8C2200BAB87B /* main.cpp */; };
 		AFEB3ABF23EC8C8C00BAB87B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEB3ABE23EC8C8C00BAB87B /* OpenGL.framework */; };
 		AFEB3AC323EC8EB300BAB87B /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEB3AC223EC8EB300BAB87B /* libglfw.3.3.dylib */; };
@@ -26,6 +31,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		AFC1C8FD2464FEB7006DE0B7 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AFC1C8FC2464FEB7006DE0B7 /* libIrrXML.dylib in Embed Libraries */,
+				AFC1C8FA2464FEB7006DE0B7 /* libassimp.5.0.0.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AFEB3AB123EC8C2200BAB87B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -69,6 +86,10 @@
 		AFC1C8F22463528E006DE0B7 /* PointLight.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PointLight.hpp; sourceTree = "<group>"; };
 		AFC1C8F42464DA03006DE0B7 /* SpotLight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpotLight.cpp; sourceTree = "<group>"; };
 		AFC1C8F52464DA03006DE0B7 /* SpotLight.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpotLight.hpp; sourceTree = "<group>"; };
+		AFC1C8F72464FEB7006DE0B7 /* libassimp.5.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.5.0.0.dylib; path = ../../../../../usr/local/Cellar/assimp/5.0.1/lib/libassimp.5.0.0.dylib; sourceTree = "<group>"; };
+		AFC1C8F82464FEB7006DE0B7 /* libIrrXML.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libIrrXML.dylib; path = ../../../../../usr/local/Cellar/assimp/5.0.1/lib/libIrrXML.dylib; sourceTree = "<group>"; };
+		AFC1C8FE246624D5006DE0B7 /* Mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
+		AFC1C8FF246624D5006DE0B7 /* Mesh.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = "<group>"; };
 		AFEB3AB323EC8C2200BAB87B /* OpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFEB3AB623EC8C2200BAB87B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AFEB3ABE23EC8C8C00BAB87B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -85,7 +106,9 @@
 			files = (
 				AFEB3AC423EC988000BAB87B /* libGLEW.2.1.0.dylib in Frameworks */,
 				AFEB3AC323EC8EB300BAB87B /* libglfw.3.3.dylib in Frameworks */,
+				AFC1C8F92464FEB7006DE0B7 /* libassimp.5.0.0.dylib in Frameworks */,
 				AFEB3ABF23EC8C8C00BAB87B /* OpenGL.framework in Frameworks */,
+				AFC1C8FB2464FEB7006DE0B7 /* libIrrXML.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +138,8 @@
 				AF77DA282429877800CC28C6 /* vertexShader.vert */,
 				AF77DA272429877800CC28C6 /* fragmentShader.frag */,
 				AFEB3AB623EC8C2200BAB87B /* main.cpp */,
+				AFC1C8FE246624D5006DE0B7 /* Mesh.cpp */,
+				AFC1C8FF246624D5006DE0B7 /* Mesh.hpp */,
 				AF452B2D242D6F3A00A92256 /* Light.hpp */,
 				AF452B2C242D6F3A00A92256 /* Light.cpp */,
 				AFC1C8F12463528E006DE0B7 /* PointLight.cpp */,
@@ -153,6 +178,8 @@
 		AFEB3ABD23EC8C8C00BAB87B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AFC1C8F72464FEB7006DE0B7 /* libassimp.5.0.0.dylib */,
+				AFC1C8F82464FEB7006DE0B7 /* libIrrXML.dylib */,
 				AFEB3AC223EC8EB300BAB87B /* libglfw.3.3.dylib */,
 				AFEB3AC023EC8E6A00BAB87B /* libGLEW.2.1.0.dylib */,
 				AFEB3ABE23EC8C8C00BAB87B /* OpenGL.framework */,
@@ -170,6 +197,7 @@
 				AFEB3AAF23EC8C2200BAB87B /* Sources */,
 				AFEB3AB023EC8C2200BAB87B /* Frameworks */,
 				AFEB3AB123EC8C2200BAB87B /* CopyFiles */,
+				AFC1C8FD2464FEB7006DE0B7 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -227,6 +255,7 @@
 				AFC1C8F02460A502006DE0B7 /* imgui_impl_glfw.cpp in Sources */,
 				AF77DA26242541A200CC28C6 /* Camera.cpp in Sources */,
 				AFC1C8ED2460A502006DE0B7 /* imgui_demo.cpp in Sources */,
+				AFC1C900246624D5006DE0B7 /* Mesh.cpp in Sources */,
 				AFC1C8F32463528E006DE0B7 /* PointLight.cpp in Sources */,
 				AFEB3AB723EC8C2200BAB87B /* main.cpp in Sources */,
 				AFC1C8EE2460A502006DE0B7 /* imgui.cpp in Sources */,
@@ -370,6 +399,7 @@
 					"$(inherited)",
 					/usr/local/Cellar/glew/2.1.0_1/lib,
 					/usr/local/Cellar/glfw/3.3.2/lib,
+					/usr/local/Cellar/assimp/5.0.1/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -388,6 +418,7 @@
 					"$(inherited)",
 					/usr/local/Cellar/glew/2.1.0_1/lib,
 					/usr/local/Cellar/glfw/3.3.2/lib,
+					/usr/local/Cellar/assimp/5.0.1/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
