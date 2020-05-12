@@ -12,8 +12,8 @@ out vec3 fragNormal;
 out vec2 textureCoord;
 
 void main() {
+    textureCoord = aTextureCoord;
     gl_Position = projectionMat * viewMat * modelMat * vec4(aPos, 1.0);
     fragPos = vec3(modelMat * vec4(aPos, 1.0));
     fragNormal = mat3(transpose(inverse(modelMat))) * aNormal;
-    textureCoord = aTextureCoord;
 }

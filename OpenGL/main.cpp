@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string.h>
 #include <cmath>
@@ -14,13 +15,13 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/trigonometric.hpp>
-#define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 #include <assimp/Importer.hpp>
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include "Mesh.hpp"
+#include "Model.hpp"
 
 
 //VAO: Vertex Array Object(Header or description of data)
@@ -167,19 +168,9 @@ void createIMGUI() {
     ImGui::Text("Options: ");
     ImGui::InputInt("Rotate Degree", &s1);
 }
-int main() {
-    glm::vec3 cubePositions[] = {
-      glm::vec3( 0.0f,  0.0f,  0.0f),
-      glm::vec3( 2.0f,  5.0f, -15.0f),
-      glm::vec3(-1.5f, -2.2f, -2.5f),
-      glm::vec3(-3.8f, -2.0f, -12.3f),
-      glm::vec3( 2.4f, -0.4f, -3.5f),
-      glm::vec3(-1.7f,  3.0f, -7.5f),
-      glm::vec3( 1.3f, -2.0f, -2.5f),
-      glm::vec3( 1.5f,  2.0f, -2.5f),
-      glm::vec3( 1.5f,  0.2f, -1.5f),
-      glm::vec3(-1.3f,  1.0f, -1.5f)
-    };
+
+int main1(int argc, char* argv[]) {
+    
     // Initalize GLFW (GLFW for managing windows)
     if (!glfwInit()) {
         printf("GLFW initialisation failed!");
@@ -213,6 +204,9 @@ int main() {
     }
     glViewport(0, 0, screenWidth, screenHeight);
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_STENCIL_TEST);
+
+    glDepthFunc(GL_LESS);
     
     //    IMGUI Binding
     IMGUI_CHECKVERSION();
@@ -225,12 +219,10 @@ int main() {
     bool changePointLight = true;
     bool changeSpotLight = true;
     Shader* ourShader = new Shader("vertexShader.vert", "fragmentShader.frag");
-    createTriangle();
-    
-    Material* ourMaterial = new Material(ourShader, processTexture("container2.png", 1, GL_RGBA, GL_RGBA, 0), processTexture("container2_specular.png", 1, GL_RGBA, GL_RGBA, 1), 32.0f);
-    
+    Model car("models/nanosuit/nanosuit.obj");
+    //Material* ourMaterial = new Material(ourShader, processTexture("container2.png", 1, GL_RGBA, GL_RGBA, 0), processTexture("container2_specular.png", 1, GL_RGBA, GL_RGBA, 1), 32.0f);
+//    
     Light* ourLight = new Light(ourShader, glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f));
-    
     PointLight* ourPointLight = new PointLight(ourShader, glm::vec3(1.2f, 1.0f, 2.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f), 1.0f, 0.09f, 0.032f);
     SpotLight* ourSpotLight = new SpotLight(ourShader, glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f), camera.Position, camera.Direction, glm::cos(glm::radians(12.5f)), glm::cos(glm::radians(17.5f)));
     
@@ -270,33 +262,32 @@ int main() {
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         ourShader->use();
-        glBindVertexArray(VAO);
-//            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-                for (int i = 0; i < 10; i ++) {
-                    //Set MPV Matrices
-                    glm::mat4 modelMat(1.0f); //TRS
-                    modelMat = glm::translate(modelMat, cubePositions[i]);
-                    float degree = 20.f * (i + 1);
-                    modelMat = glm::rotate(modelMat, (float)glfwGetTime() * glm::radians(degree), glm::vec3(0.5f, 1.0f, 0.0f));
-                    glm::mat4 projectionMat(1.0f);
-                    projectionMat = glm::perspective(glm::radians(45.0f), (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
-                    glm::mat4 viewMat(1.0f);
-                    viewMat = camera.getViewMatrix();
+            //Set MPV Matrices
+            glm::mat4 modelMat(1.0f); //TRS
+            modelMat = glm::translate(modelMat, glm::vec3(0, -0.2f, 0));
+//            modelMat = glm::scale(modelMat, glm::vec3(0.9f, 0.9f, 0.9f));
+            float degree = 20.f;
+            modelMat = glm::rotate(modelMat, glm::radians(degree), glm::vec3(0.5f, 1.0f, 0.0f));
+            glm::mat4 projectionMat(1.0f);
+            projectionMat = glm::perspective(glm::radians(45.0f), (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);
+            glm::mat4 viewMat(1.0f);
+            viewMat = camera.getViewMatrix();
+            
+            //Set Uniform
+            glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "projectionMat"), 1, GL_FALSE, glm::value_ptr(projectionMat));
+            glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMat));
+
+            glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMat));
+
+            ourShader->setVec3Uni("viewPos", camera.Position);
+            ourLight->setUniforms();
+            ourPointLight->setUniforms();
+            ourSpotLight->setUniforms();
+//                    ourMaterial->setUniforms();
+//                    glDrawArrays(GL_TRIANGLES, 0, 36);
                     
-                    //Set Uniform
-                    glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "modelMat"), 1, GL_FALSE, glm::value_ptr(modelMat));
-                    glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "viewMat"), 1, GL_FALSE, glm::value_ptr(viewMat));
-                    glUniformMatrix4fv(glGetUniformLocation(ourShader -> ID, "projectionMat"), 1, GL_FALSE, glm::value_ptr(projectionMat));
-                    
-                    ourShader->setVec3Uni("viewPos", camera.Position);
-                    ourLight->setUniforms();
-                    ourPointLight->setUniforms();
-                    ourSpotLight->setUniforms();
-                    ourMaterial->setUniforms();
-                    glDrawArrays(GL_TRIANGLES, 0, 36);
-                }
-//            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-        glBindVertexArray(0);
+                
+        car.Draw(ourShader);
         glUseProgram(0);
     
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -311,7 +302,7 @@ int main() {
     return 0;
 }
 
-int main1() {
+int main() {
     GLfloat vertices[] = {
         //aPos                  aNormal            aTextureCoord
         -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,

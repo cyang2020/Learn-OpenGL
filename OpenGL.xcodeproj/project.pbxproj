@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AF452B2B242D664900A92256 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF452B29242D664900A92256 /* Material.cpp */; };
 		AF452B2E242D6F3A00A92256 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF452B2C242D6F3A00A92256 /* Light.cpp */; };
+		AF6156812467C88F00D19160 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF61567F2467C88F00D19160 /* Model.cpp */; };
 		AF77DA26242541A200CC28C6 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF77DA24242541A200CC28C6 /* Camera.cpp */; };
 		AFC1C8EB2460A502006DE0B7 /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC1C8E22460A3F0006DE0B7 /* imgui_draw.cpp */; };
 		AFC1C8EC2460A502006DE0B7 /* imgui_impl_opengl3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC1C8E62460A3F0006DE0B7 /* imgui_impl_opengl3.cpp */; };
@@ -23,6 +24,7 @@
 		AFC1C8FB2464FEB7006DE0B7 /* libIrrXML.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC1C8F82464FEB7006DE0B7 /* libIrrXML.dylib */; };
 		AFC1C8FC2464FEB7006DE0B7 /* libIrrXML.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = AFC1C8F82464FEB7006DE0B7 /* libIrrXML.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AFC1C900246624D5006DE0B7 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC1C8FE246624D5006DE0B7 /* Mesh.cpp */; };
+		AFCA9B4F2469FFF0004DFFBC /* stb_image.c in Sources */ = {isa = PBXBuildFile; fileRef = AFCA9B4E2469FFEF004DFFBC /* stb_image.c */; };
 		AFEB3AB723EC8C2200BAB87B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFEB3AB623EC8C2200BAB87B /* main.cpp */; };
 		AFEB3ABF23EC8C8C00BAB87B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEB3ABE23EC8C8C00BAB87B /* OpenGL.framework */; };
 		AFEB3AC323EC8EB300BAB87B /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEB3AC223EC8EB300BAB87B /* libglfw.3.3.dylib */; };
@@ -61,7 +63,8 @@
 		AF452B2D242D6F3A00A92256 /* Light.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Light.hpp; sourceTree = "<group>"; };
 		AF452B2F242DB60B00A92256 /* container2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2.png; sourceTree = "<group>"; };
 		AF452B302432DF6C00A92256 /* container2_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2_specular.png; sourceTree = "<group>"; };
-		AF77DA21241F3E3600CC28C6 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		AF61567F2467C88F00D19160 /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
+		AF6156802467C88F00D19160 /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
 		AF77DA22242198A800CC28C6 /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = container.jpg; sourceTree = "<group>"; };
 		AF77DA232421E52600CC28C6 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 		AF77DA24242541A200CC28C6 /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
@@ -90,6 +93,11 @@
 		AFC1C8F82464FEB7006DE0B7 /* libIrrXML.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libIrrXML.dylib; path = ../../../../../usr/local/Cellar/assimp/5.0.1/lib/libIrrXML.dylib; sourceTree = "<group>"; };
 		AFC1C8FE246624D5006DE0B7 /* Mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		AFC1C8FF246624D5006DE0B7 /* Mesh.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = "<group>"; };
+		AFCA9B4B2469E617004DFFBC /* SOIL2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SOIL2; sourceTree = "<group>"; };
+		AFCA9B4D2469FE4E004DFFBC /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		AFCA9B4E2469FFEF004DFFBC /* stb_image.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stb_image.c; sourceTree = "<group>"; };
+		AFCA9B50246A0132004DFFBC /* fragmentShader1.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = fragmentShader1.frag; sourceTree = "<group>"; };
+		AFCA9B51246A01C4004DFFBC /* models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = models; sourceTree = "<group>"; };
 		AFEB3AB323EC8C2200BAB87B /* OpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFEB3AB623EC8C2200BAB87B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AFEB3ABE23EC8C8C00BAB87B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -135,9 +143,13 @@
 		AFEB3AB523EC8C2200BAB87B /* OpenGL */ = {
 			isa = PBXGroup;
 			children = (
+				AFCA9B51246A01C4004DFFBC /* models */,
 				AF77DA282429877800CC28C6 /* vertexShader.vert */,
 				AF77DA272429877800CC28C6 /* fragmentShader.frag */,
+				AFCA9B50246A0132004DFFBC /* fragmentShader1.frag */,
 				AFEB3AB623EC8C2200BAB87B /* main.cpp */,
+				AF61567F2467C88F00D19160 /* Model.cpp */,
+				AF6156802467C88F00D19160 /* Model.hpp */,
 				AFC1C8FE246624D5006DE0B7 /* Mesh.cpp */,
 				AFC1C8FF246624D5006DE0B7 /* Mesh.hpp */,
 				AF452B2D242D6F3A00A92256 /* Light.hpp */,
@@ -152,13 +164,14 @@
 				AF77DA24242541A200CC28C6 /* Camera.cpp */,
 				AFF0E09B240736F50035E098 /* Shader.hpp */,
 				AFF0E09A240736F50035E098 /* Shader.cpp */,
-				AF77DA21241F3E3600CC28C6 /* stb_image.h */,
 				AF452B2F242DB60B00A92256 /* container2.png */,
 				AF77DA22242198A800CC28C6 /* container.jpg */,
 				AF77DA232421E52600CC28C6 /* awesomeface.png */,
 				AF452B302432DF6C00A92256 /* container2_specular.png */,
 				AFC1C8E32460A3F0006DE0B7 /* imconfig.h */,
+				AFCA9B4D2469FE4E004DFFBC /* stb_image.h */,
 				AFC1C8E22460A3F0006DE0B7 /* imgui_draw.cpp */,
+				AFCA9B4E2469FFEF004DFFBC /* stb_image.c */,
 				AFC1C8DF2460A3EF006DE0B7 /* imgui_impl_glfw.cpp */,
 				AFC1C8E52460A3F0006DE0B7 /* imgui_impl_glfw.h */,
 				AFC1C8E62460A3F0006DE0B7 /* imgui_impl_opengl3.cpp */,
@@ -171,6 +184,7 @@
 				AFC1C8E72460A3F0006DE0B7 /* imstb_rectpack.h */,
 				AFC1C8DE2460A3EF006DE0B7 /* imstb_textedit.h */,
 				AFC1C8E12460A3F0006DE0B7 /* imstb_truetype.h */,
+				AFCA9B4B2469E617004DFFBC /* SOIL2 */,
 			);
 			path = OpenGL;
 			sourceTree = "<group>";
@@ -252,11 +266,13 @@
 				AFC1C8EF2460A502006DE0B7 /* imgui_widgets.cpp in Sources */,
 				AFC1C8EC2460A502006DE0B7 /* imgui_impl_opengl3.cpp in Sources */,
 				AFC1C8EB2460A502006DE0B7 /* imgui_draw.cpp in Sources */,
+				AFCA9B4F2469FFF0004DFFBC /* stb_image.c in Sources */,
 				AFC1C8F02460A502006DE0B7 /* imgui_impl_glfw.cpp in Sources */,
 				AF77DA26242541A200CC28C6 /* Camera.cpp in Sources */,
 				AFC1C8ED2460A502006DE0B7 /* imgui_demo.cpp in Sources */,
 				AFC1C900246624D5006DE0B7 /* Mesh.cpp in Sources */,
 				AFC1C8F32463528E006DE0B7 /* PointLight.cpp in Sources */,
+				AF6156812467C88F00D19160 /* Model.cpp in Sources */,
 				AFEB3AB723EC8C2200BAB87B /* main.cpp in Sources */,
 				AFC1C8EE2460A502006DE0B7 /* imgui.cpp in Sources */,
 			);
